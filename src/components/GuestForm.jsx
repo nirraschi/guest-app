@@ -36,7 +36,7 @@ const GuestForm = () => {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/events/${eventId}`);
+                const response = await axios.get(`htt://app-lautaro-backend-2-209isbdba-nirvanas-projects-8e30d85c.vercel.app/events/${eventId}`);
                 setEvent(response.data);
             } catch (error) {
                 console.error('Error fetching event details:', error);
@@ -51,7 +51,7 @@ const GuestForm = () => {
         if (!validate()) return; // Detener el envío si la validación falla
         console.log(`Event ID: ${eventId}`);
         try {
-            const response = await axios.post(`http://localhost:3000/events/${eventId}/guests`, invitado);
+            const response = await axios.post(`http://app-lautaro-backend-2-209isbdba-nirvanas-projects-8e30d85c.vercel.app/${eventId}/guests`, invitado);
             console.log('Invitado creado:', response.data);
             setInvitado({
                 nombre: '',
