@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const GuestForm = () => {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://app-lautaro-backend-2.vercel.app';
+
     const { eventId } = useParams();
     const [event, setEvent] = useState({ name: '', imageUrl: '' });
     const [invitado, setInvitado] = useState({
@@ -36,7 +38,7 @@ const GuestForm = () => {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                const response = await axios.get(`htt://app-lautaro-backend-2-209isbdba-nirvanas-projects-8e30d85c.vercel.app/events/${eventId}`);
+                const response = await axios.get(`${backendUrl}/events/${eventId}`);
                 setEvent(response.data);
             } catch (error) {
                 console.error('Error fetching event details:', error);
@@ -51,7 +53,7 @@ const GuestForm = () => {
         if (!validate()) return; // Detener el envío si la validación falla
         console.log(`Event ID: ${eventId}`);
         try {
-            const response = await axios.post(`http://app-lautaro-backend-2-209isbdba-nirvanas-projects-8e30d85c.vercel.app/${eventId}/guests`, invitado);
+            const response = await axios.post(`${backendUrl}/${eventId}/guests`, invitado);
             console.log('Invitado creado:', response.data);
             setInvitado({
                 nombre: '',
