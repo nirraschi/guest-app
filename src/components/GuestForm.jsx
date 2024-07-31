@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const GuestForm = () => {
-    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://app-lautaro-backend-2.vercel.app';
+    const backendUrl = 'https://app-lautaro-backend.onrender.com' //|| 'http://localhost:3000';
 
     const { eventId } = useParams();
     const [event, setEvent] = useState({ name: '', imageUrl: '' });
